@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  dev-db:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: david0
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: nest
+      PGDATA: /data/postgres
+    networks:
+      - dockerNet
+networks:
+  dockerNet:
