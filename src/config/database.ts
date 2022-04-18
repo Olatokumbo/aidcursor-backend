@@ -8,5 +8,8 @@ export const AppDataSource = new DataSource({
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT as unknown as number,
   database: process.env.DATABASE,
+  entities: ["src/**/*.entity{.ts,.js}"],
+  migrations: ["src/**/*.entity{.ts,.js}"],
+  synchronize: true,
   ssl: true,
 });
