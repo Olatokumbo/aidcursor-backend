@@ -11,5 +11,14 @@ services:
       PGDATA: /data/postgres
     networks:
       - dockerNet
+  dev-cache:
+    image: redis:4.0
+    command: /bin/bash -c 'redis-server --appendonly yes'
+    ports:
+      - "6379:6379"
+    mem_limit: 96m
+    networks:
+      - dockerNet
 networks:
   dockerNet:
+    driver: bridge
