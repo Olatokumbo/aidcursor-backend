@@ -1,5 +1,13 @@
-import { Column, Entity, OneToOne } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+} from "typeorm";
 import { Node } from "../common/base/base.entity";
+import { Emergency } from "./emergency.entity";
 import { User } from "./user.entity";
 
 export enum VolunteerType {
@@ -29,4 +37,8 @@ export class Volunteer extends Node {
 
   @OneToOne(() => User, (user) => user.volunteer)
   user: User;
+
+  @ManyToMany(() => Emergency, { eager: true })
+  @JoinTable()
+  emergencies: Emergency[];
 }

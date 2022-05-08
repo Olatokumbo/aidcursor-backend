@@ -32,6 +32,6 @@ export class User extends Node {
   @JoinColumn()
   volunteer: Volunteer;
 
-  @OneToMany(() => Emergency, (emergency) => emergency.user)
+  @OneToMany(() => Emergency, (emergency) => emergency.requestedUser)
   emergencies: Emergency[];
 }

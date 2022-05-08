@@ -1,6 +1,7 @@
-import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany } from "typeorm";
 import { Node } from "../common/base/base.entity";
 import { User } from "./user.entity";
+import { Volunteer } from "./volunteer.entity";
 
 export enum EmergencyLevel {
   HIGH = "HIGH",
@@ -43,5 +44,8 @@ export class Emergency extends Node {
   longitude: string;
 
   @ManyToOne(() => User, (user) => user.emergencies)
-  user: User;
+  requestedUser: User;
+
+  @ManyToMany(() => Volunteer, (volunteer) => volunteer.emergencies)
+  volunteers: Volunteer[];
 }
